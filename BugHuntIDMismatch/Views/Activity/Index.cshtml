@@ -1,0 +1,29 @@
+﻿@model BugHuntIDMismatch.ViewModels.ActivityIndexVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Activities</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Report ID</th>
+            <th>Description</th>
+            <th>Target Date</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var activity in Model.Activities)
+        {
+            <tr>
+                <td>@activity.ReportID</td>
+                <td>@activity.Description</td>
+                <td>@activity.TargetDate.ToShortDateString()</td>
+                <td>@Html.ActionLink("Edit", "Edit", "Activity", new { id = activity.ID }, new { @class = "btn btn-primary" })</td>
+            </tr>
+        }
+    </tbody>
+</table>
